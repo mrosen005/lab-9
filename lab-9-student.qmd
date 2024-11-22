@@ -1,13 +1,23 @@
 ---
 title: "Lab 9: Data Simulation Exploration"
-author: "Your name here!"
-format: html
+author: "Miriam Rosen"
+format: 
+  html:  
+    embed-resources: true
+    code-tools: true
+    code-fold: true
+    toc: true
 editor: source
-embed-resources: true
+execute: 
+  echo: true
+  message: false
+  warning: false
 ---
 
 ```{r}
 #| label: setup
+
+
 
 
 ```
@@ -34,12 +44,11 @@ for it to be compatible with `map_int()`!
 #| label: function-simulation-for-random-babies
 
 randomBabies <- function(nBabies){
-  ...
+                      
 }
 
 results <- map_int(.x = 1:10000,
-                   .f = ___
-                   )
+                   .f = )
 ```
 
 **2. Create a table displaying the proportion of simulations where 0, 1, 2, 3, and 4 babies were given to their correct parent(s).** Hint: A `pivot_wider()` will be helpful here!
