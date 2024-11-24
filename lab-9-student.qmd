@@ -2,7 +2,7 @@
 title: "Lab 9: Data Simulation Exploration"
 author: "Miriam Rosen"
 format: 
-  html:  
+  html:
     embed-resources: true
     code-tools: true
     code-fold: true
@@ -83,6 +83,7 @@ enframe(results,
 ```{r}
 #| label: table-for-random-babies
 
+library(gt)
 
 tibble_of_results <- enframe(results, 
                              name = "simulation_number",
@@ -112,12 +113,30 @@ rotate_counts <- random_babies_table |>
 
 
 
-random_babies_table_all <- bind_cols(rotate_counts,
+bind_cols(rotate_counts,
                          rotate_proportions
-                         ) |>
-print(random_babies_table_all)
+                         )  |>
+   gt() |> 
+  tab_header(title = "Baby Matching Simulation Results", 
+             subtitle = "Counts and Proportions of Correctly Matched Babies Across Simulations"
+             ) |> 
+  tab_options(table.font.size = "18", 
+              column_labels.font.size = "15", 
+              heading.title.font.size = "25", 
+              table.background.color = "#f0f0f0", 
+              table.border.bottom.color = "#636363", 
+              table.font.names = "Times New Roman"
+              ) |>
+ fmt_number(decimals = 3) |>
+  tab_style(style = list(cell_borders(sides = "all",
+                                      color= "black"
+                                      ),
+                         cell_fill(color = "white")
+                         ),
+            locations = cells_body()
+            ) 
 
-
+# Used this website, https://colorbrewer2.org/#type=sequential&scheme=RdPu&n=3, to add colors to make my table more visually appealing and show creativity.  
 
 ```
 
@@ -233,6 +252,7 @@ Hint: Make sure your columns have descriptive names!
 ```{r}
 #| label: table-of-simulated Means
 
+library(gt)
 
 all_simulations |> 
   group_by(n) |> 
@@ -246,10 +266,28 @@ all_simulations |>
          'Simulated Mean of 100' = '100', 
          'Simulated Mean of 1,000' = '1000',
          'Simulated Mean of 10,000' = '10000'
-         )
-
-
-
+         ) |> 
+  gt() |> 
+  tab_header(title = "Simulated Means By Sample Size", 
+             subtitle = "Exploration of Results Across Varying Sample Sizes"
+             ) |> 
+  tab_options(table.font.size = "18", 
+              column_labels.font.size = "15", 
+              heading.title.font.size = "25", 
+              table.background.color = "#f0f0f0", 
+              table.border.bottom.color = "#636363", 
+              table.font.names = "Times New Roman"
+              ) |>
+ fmt_number(decimals = 3) |>
+  tab_style(style = list(cell_borders(sides = "all",
+                                      color= "black"
+                                      ),
+                         cell_fill(color = "white")
+                         ),
+            locations = cells_body()
+            )
+  
+# Used this website, https://colorbrewer2.org/#type=sequential&scheme=RdPu&n=3, to add colors to make my table more visually appealing and show creativity.  
 
 ```
 
