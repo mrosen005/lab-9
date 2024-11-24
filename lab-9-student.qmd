@@ -109,7 +109,8 @@ rotate_counts <- random_babies_table |>
          ) |> 
   pivot_wider(names_from = ncorrect, 
               values_from = baby_count, 
-              names_prefix = "Count For ")
+              names_prefix = "Count For ") 
+ 
 
 
 
@@ -134,7 +135,9 @@ bind_cols(rotate_counts,
                          cell_fill(color = "white")
                          ),
             locations = cells_body()
-            ) 
+            ) |>
+  fmt_percent(columns = starts_with("Proportion For "))
+ 
 
 # Used this website, https://colorbrewer2.org/#type=sequential&scheme=RdPu&n=3, to add colors to make my table more visually appealing and show creativity.  
 
